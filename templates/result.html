@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Benford Analysis | {{title}}</title>
+        <!--<link
+            rel="stylesheet"
+            href="{{ request.static_url('__main__:static/style.css') }}"
+        />-->
+        <link rel="stylesheet" href="../static/style.css">
+    </head>
+    <body>
+        <div class="result-wrapper">
+        <a href="{{ url_for('blueprint.index') }}" class="back-btn">Back To Home</a>
+        <div class="form-wrapper">
+            <h2 class="title">Benford Data Analysis Result</h2> 
+            <p class="details">Data follows Benford's law</p>
+            <p class="details">Total Rows: 20000</p>
+            <table>
+                <h2 class="title">Each Digit Details</h2>
+                <thead>
+                    <tr>
+                        <th>Number</th>
+                        <th>Row Count</th>
+                        <th>Percentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>3000</td>
+                        <td>25%</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>1500</td>
+                        <td>15%</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>1500</td>
+                        <td>15%</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>1500</td>
+                        <td>15%</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>1500</td>
+                        <td>15%</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>1500</td>
+                        <td>15%</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>1500</td>
+                        <td>15%</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>1500</td>
+                        <td>15%</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>1500</td>
+                        <td>15%</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>1500</td>
+                        <td>15%</td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+    <div class="img-wrapper">
+        <h2 class="title">Distribution for given data</h2>
+        <img src="../static/result_img.jpg" alt="Benford's distribution">
+    </div>
+</div>
+    </body>
+</html>
