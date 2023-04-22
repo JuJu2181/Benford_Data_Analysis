@@ -13,77 +13,38 @@
     </head>
     <body>
         <div class="result-wrapper">
-        <a href="{{ url_for('blueprint.index') }}" class="back-btn">Back To Home</a>
+        <a href="/" class="back-btn">Back To Home</a>
         <div class="form-wrapper">
             <h2 class="title">Benford Data Analysis Result</h2> 
-            <p class="details">Data follows Benford's law</p>
-            <p class="details">Total Rows: 20000</p>
+            <p class="details">{{Message}}</p>
             <table>
                 <h2 class="title">Each Digit Details</h2>
                 <thead>
                     <tr>
                         <th>Number</th>
-                        <th>Row Count</th>
-                        <th>Percentage</th>
+                        <th>Observed Probability</th>
+                        <th>Actual Probabilty</th>
                     </tr>
                 </thead>
                 <tbody>
+                    {% for num,prob in Distribution.items() %}
                     <tr>
-                        <td>1</td>
-                        <td>3000</td>
-                        <td>25%</td>
+                        <td>{{num}}</td>
+                        <td>{{prob}}</td>
+                        <td>{{Benford[num]}}</td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>1500</td>
-                        <td>15%</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>1500</td>
-                        <td>15%</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>1500</td>
-                        <td>15%</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>1500</td>
-                        <td>15%</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>1500</td>
-                        <td>15%</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>1500</td>
-                        <td>15%</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>1500</td>
-                        <td>15%</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>1500</td>
-                        <td>15%</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>1500</td>
-                        <td>15%</td>
-                    </tr>
+                    {% endfor %}
+                    
                 </tbody>
             </table>
     </div>
     <div class="img-wrapper">
-        <h2 class="title">Distribution for given data</h2>
-        <img src="../static/result_img.jpg" alt="Benford's distribution">
+        <h2 class="title">Observed distribution for given data</h2>
+        <img src="../static/result_img.png" alt="Benford's distribution">
+    </div>
+    <div class="img-wrapper">
+        <h2 class="title">Actual Benford Distribution</h2>
+        <img src="../static/data_distribution.png" alt="Benford's distribution">
     </div>
 </div>
     </body>

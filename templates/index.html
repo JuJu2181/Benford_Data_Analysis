@@ -15,14 +15,27 @@
         <div class="home-wrapper">
         <div class="form-wrapper">
             <h2 class="title">Benford Data Analysis</h2>
-        <form action="/benford" method="POST" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data" id="myform">
             <div class="form-group">
                 <label for="csvInput" class="form-header">Select CSV file to upload: </label>
-                <input type="file" name="csvInput" id="csvInput">
+                <input type="file" name="csvInput" id="csvInput" required>
             </div>
-            <button type="submit" class="form-btn">Upload</button>
+            <div class="btn-group">
+            <a href="#" class="form-btn" id="benford">Get Json</a>
+            <a href="#" class="form-btn" id="analyse">Analyse</a>
+            </div>
         </form>
     </div>
 </div>
     </body>
+    <script>
+        function submitForm(action_url) {
+            var form = document.getElementById("myform");
+            form.action = action_url;
+            form.submit();
+        }
+        document.getElementById("benford").addEventListener("click", ()=>{submitForm("/benford")});
+        document.getElementById("analyse").addEventListener("click", ()=>{submitForm("/analyse")});
+    </script>
+        
 </html>

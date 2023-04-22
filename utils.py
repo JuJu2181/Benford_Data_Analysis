@@ -22,13 +22,12 @@ def get_data_distribution(filepath):
             if int(k) > 0:
                 filtered_dict[k] = leading_digits_dict[k]
     probability_dict = {k: filtered_dict[k]/sum(filtered_dict.values()) for k in filtered_dict.keys()}
-    fig = plt.figure(figsize=(10,5))
+    fig = plt.figure(figsize=(15,10))
     plt.bar(probability_dict.keys(),probability_dict.values())
     plt.xlabel("Leading Digits")
     plt.ylabel("Probability")
     plt.title("Probability distribution of first significant digit")
-    plt.savefig("data_distribution.png")
-    plt.show()
+    plt.savefig("static/result_img.png")
     return probability_dict
 
 def check_benford_law(filepath):

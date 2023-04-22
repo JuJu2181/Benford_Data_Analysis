@@ -49,4 +49,32 @@ def benford(request):
     # response.headers['Content-Disposition'] = 'attachment; filename="benford.json"'
     # return response
     return result
-    
+
+@view_config(route_name="analyse",renderer="templates/result.html")
+def analyse(request):
+    csv_file = request.POST['csvInput'].file
+    filename = request.POST['csvInput'].filename 
+    name, ext = filename.split('.')
+    if not ext == 'csv':
+        return {"Error": "Invalid File Input! Please upload CSV file"}
+    else:
+        # save in local directory uploads
+        filepath = f"uploads/{filename}"
+        with open(filepath,"wb") as f:
+            f.write(csv_file.read())
+        
+        data_distribution = get_data_distribution(filepath) 
+        benford_distribution = {str(k): np.log10(1+(1/k)) for k in range(1,10)}   
+        if check_benford_law(filepath) == True:
+            message = "Given data follows Benford's law"
+        else:
+            message = "Given data doesn't follow Benford's law"
+            
+        result =  {
+            "Message": message,
+            "Distribution": data_distribution,
+            "Benford": benford_distribution,
+            "title": "Results"
+            }
+
+    return result
