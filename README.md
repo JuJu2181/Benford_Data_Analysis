@@ -13,6 +13,12 @@ This is a simple data engineering project using Pyramid framework of Python. Her
 - Pyramid Framework
 - HTML/CSS
 
+## Demo Video
+
+
+https://user-images.githubusercontent.com/43902648/233802125-8b5ad344-f7db-4a42-a6a5-645e8c03bb07.mp4
+
+
 
 ## Screenshots
 ### Input Form
