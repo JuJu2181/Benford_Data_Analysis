@@ -1,3 +1,4 @@
+# this file contains routes and views for the application according to Pyramid framework
 from pyramid.config import Configurator 
 from views import *
 
