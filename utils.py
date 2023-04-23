@@ -46,32 +46,38 @@ def get_data_distribution(filepath):
     return probability_dict
 
 def check_benford_law(filepath):
+    # Theoretical Benford distribution using formula
     benford_distribution = {str(k): np.log10(1+(1/k)) for k in range(1,10)}
+    # Observed data distribution for the input dataset
     observed_distribution = get_data_distribution(filepath)
     
-    # Here I have considered 2 methods for checking for Benford's law. In the first method I will compare the order of observed distribution with order of benford's distribution. If order is same it follows the law, but if the order is not same I will check if the most frequent first digit is 1 or not, if it is 1 then also Benford's law is true. In the 2nd method, I have tried using the absolute deviation between the numbers and checking if it is within the limit or not. I have commented out the 2nd method and used the 1st method.
-    
+    # Method 1: Compare order and most frequent key in both distirbution
     # checking key order
-    benford_key_order = list(benford_distribution.keys()) 
-    observed_key_order = list(observed_distribution.keys())
-    # if both have same order most probably it follows the law
-    if benford_key_order == observed_key_order:
-        return True 
-    else:
-        # checking if the highest value is of 1 or not
-        observed_max_key = max(observed_distribution,key=observed_distribution.get)
-        benford_max_key = max(benford_distribution,key=benford_distribution.get)
-        return True if observed_max_key == benford_max_key else False
+    # benford_key_order = list(benford_distribution.keys()) 
+    # observed_key_order = list(observed_distribution.keys())
+    # # if both have same order most probably it follows the law
+    # if benford_key_order == observed_key_order:
+    #     return True 
+    # else:
+    #     # checking if the highest value is of 1 or not
+    #     observed_max_key = max(observed_distribution,key=observed_distribution.get)
+    #     benford_max_key = max(benford_distribution,key=benford_distribution.get)
+    #     return True if observed_max_key == benford_max_key else False
     
+    # Method 2: Absolute deviation method
     # checking if the absolute deviation between numbers is within limit
-    # limit = 0.05
-    # ans = True
-    # differences = {}
-    # for k in benford_distribution.keys():
-    #     differences[k] = abs(benford_distribution[k] - observed_distribution[k])
-    #     if differences[k] > limit:
-    #         ans = False 
-    
-    # print(differences)
-    # return ans
+    limit = 0.05
+    ans = True
+    differences = {}
+    for k in benford_distribution.keys():
+        differences[k] = abs(benford_distribution[k] - observed_distribution[k])
+        # check if the absolute deviation for all digits is less than limit or not
+        # if differences[k] > limit:
+        #     ans = False 
+    # Alternatively, we can find the max of all deviations and check if the maximum deviation is greater than set limit or not. Here I am excluding the deviations of first two digits i-e 1 and 2 as they can have more deviation compared to other digits, but in later digits like 7,8,9 the deviation shouldn't exceed 0.5 to conform to Benford's law
+    max_deviation = max(list(differences.values())[2:])
+    if max_deviation > limit:
+        print(f"Max Deviation: {max_deviation}")
+        ans = False
+    return ans
     

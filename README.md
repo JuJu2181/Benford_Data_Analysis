@@ -14,11 +14,7 @@ This is a simple data engineering project using Pyramid framework of Python. Her
 - HTML/CSS
 
 ## Demo Video
-
-
 https://user-images.githubusercontent.com/43902648/233802125-8b5ad344-f7db-4a42-a6a5-645e8c03bb07.mp4
-
-
 
 ## Screenshots
 ### Input Form
@@ -40,3 +36,36 @@ https://user-images.githubusercontent.com/43902648/233802125-8b5ad344-f7db-4a42-
  - Check this [YT Video](https://www.youtube.com/watch?v=oH1ZF0OOf-c)
  - And this [Blog](https://statisticsbyjim.com/probability/benfords-law/)
  - Used mostly in digital forensics, anomaly detection, fraud detection
+
+## Project Directory Structure
+- notebooks => contains notebook for dataset generation and some datasets for testing
+- output => output json files obtained from web app
+- screenshots => screenshots for readme file
+- static => CSS file and images
+- templates => html files
+- uploads => CSV files uploaded by user
+- app.py => main python file for starting web ap
+- routes.py => Pyramid routes for web app
+- views.py => Pyramid views that links to routes
+- utils.py => Utility functions 
+- Description.md => Task description
+- challenge2_documentation.pdf => Project Documentation
+- requirements.txt => Python requirements
+
+## Steps to setup this project
+1. Clone this repo.
+```
+git clone https://github.com/JuJu2181/Benford_Data_Analysis
+```
+2. Install requirements
+```
+pip install -r requirements.txt
+```
+> Use Python 3.8.10 and installing requirements in virtual environment is recommended
+
+3. Start the App
+```
+python app.py
+```
+
+Feel free to contact me if you have any queries regarding this project. Also if you like this project leave a ⭐. 
